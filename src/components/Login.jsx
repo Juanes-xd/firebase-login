@@ -10,7 +10,7 @@ const Login = () => {
                 <form className='form-group'>
                     <input className='form-control' placeholder='Introduce el email' type="text" />
                     <input className='form-control mt-4' placeholder='Password' type="text" />
-                    <input value='Registrar usuario' type="submit" />
+                    <input className='btn btn-dark btn-block mt-4' value='Registrar usuario' type="submit" />
                 </form>
             </div>
             <div className='col'></div>
