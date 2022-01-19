@@ -1,10 +1,11 @@
 import React, {useState} from 'react'
 import {Link} from 'react-router-dom';
 import {auth} from '../firebaseconfig';
+import {useNavigate} from 'react-router-dom';
 
 
 const Login = () => {
-
+    const historial = useNavigate() ;
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [msgerror, setMsgerror] = useState(null);
@@ -14,7 +15,7 @@ const Login = () => {
 
         try {
           await  auth.createUserWithEmailAndPassword(email,password)
-              .then(r => alert('Usuario registrado'))
+              .then(r => {historial('/')})
         } catch (e) {
             
             if(e.code == 'auth/invalid-email'){
@@ -30,7 +31,7 @@ const Login = () => {
 
         try {
           await  auth.signInWithEmailAndPassword(email,password)
-          .then(r => alert('Se a iniciado sesion'))
+          .then(r => {historial('/')})
         } catch (error) {
             if(error.code == 'auth/wrong-password'){
                 setMsgerror('Contraseña incorrecta')
